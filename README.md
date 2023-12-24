@@ -2,3 +2,5 @@
 Tutorial [here](https://docs.godotengine.org/en/stable/getting_started/first_3d_game/index.html)
 
 Version: 4.2.1
+
+Run: `py exported/server.py`
