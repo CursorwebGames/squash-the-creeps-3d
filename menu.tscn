@@ -70,11 +70,15 @@ text = "CREE     S"
 horizontal_alignment = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 0
-offset_left = 319.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
 offset_top = 17.0
-offset_right = 569.0
+offset_right = 206.0
 offset_bottom = 267.0
+grow_horizontal = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
