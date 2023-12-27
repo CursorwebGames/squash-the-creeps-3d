@@ -13,6 +13,7 @@ config_version=5
 config/name="Squash the Creeps (3D)"
 run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.2")
+boot_splash/show_image=false
 config/icon="res://icon.png"
 
 [autoload]
