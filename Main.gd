@@ -29,3 +29,7 @@ func _unhandled_input(event):
 func _on_player_hit():
 	($MobTimer as Timer).stop()
 	($UserInterface/Retry as ColorRect).show()
+
+
+func _on_menu_btn_pressed():
+	get_tree().change_scene_to_file("res://menu.tscn")

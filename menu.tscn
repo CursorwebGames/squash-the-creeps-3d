@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0tr8tcw4t1rd"]
+
+[ext_resource type="PackedScene" uid="uid://cj8d5lx14kyc6" path="res://menu_mobber.tscn" id="1_ji4nf"]
+[ext_resource type="Script" path="res://Menu.gd" id="1_wp1c5"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wp1c5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -79.0
+offset_right = 125.0
+offset_bottom = -13.0
+grow_vertical = 0
+
+[node name="PlayBtn" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="QuitBtn" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="SquashThe" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.5
+offset_right = 134.5
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Squash the"
+horizontal_alignment = 1
+
+[node name="Creeps" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -186.0
+offset_top = 80.0
+offset_right = 186.0
+offset_bottom = 217.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.6, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "CREE     S"
+horizontal_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 17.0
+offset_right = 569.0
+offset_bottom = 267.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(250, 250)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_ji4nf")]
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

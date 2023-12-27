@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://c7rudmb6vcqpc"]
 
-[ext_resource type="Script" path="res://Main.gd" id="1_8nmva"]
-[ext_resource type="PackedScene" uid="uid://c56rndb1t2ln4" path="res://player.tscn" id="1_nlnwx"]
-[ext_resource type="PackedScene" uid="uid://c7or72t2id3tm" path="res://mob.tscn" id="2_38f6r"]
-[ext_resource type="Material" uid="uid://ci0rkcwagaywt" path="res://debug_mesh.tres" id="4_46b58"]
-[ext_resource type="FontFile" uid="uid://4dq670flnk6s" path="res://fonts/Montserrat-Medium.ttf" id="4_vp6xu"]
-[ext_resource type="Script" path="res://ScoreLabel.gd" id="5_gxwbf"]
+[ext_resource type="Script" path="res://Main.gd" id="1_2j67b"]
+[ext_resource type="PackedScene" uid="uid://c7or72t2id3tm" path="res://mob.tscn" id="2_dvjy4"]
+[ext_resource type="PackedScene" uid="uid://c56rndb1t2ln4" path="res://player.tscn" id="3_vslq2"]
+[ext_resource type="Material" uid="uid://ci0rkcwagaywt" path="res://debug_mesh.tres" id="4_ku6q7"]
+[ext_resource type="FontFile" uid="uid://4dq670flnk6s" path="res://fonts/Montserrat-Medium.ttf" id="5_ge2xx"]
+[ext_resource type="Script" path="res://ScoreLabel.gd" id="6_ftcti"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fsg7q"]
 size = Vector3(60, 2, 60)
@@ -18,7 +18,7 @@ background_mode = 1
 background_color = Color(0.529412, 0.713726, 0.839216, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ormeh"]
-material = ExtResource("4_46b58")
+material = ExtResource("4_ku6q7")
 
 [sub_resource type="Curve3D" id="Curve3D_y2y2r"]
 _data = {
@@ -28,12 +28,12 @@ _data = {
 point_count = 5
 
 [sub_resource type="Theme" id="Theme_ifk7g"]
-default_font = ExtResource("4_vp6xu")
+default_font = ExtResource("5_ge2xx")
 default_font_size = 22
 
 [node name="Main" type="Node"]
-script = ExtResource("1_8nmva")
-mob_scene = ExtResource("2_38f6r")
+script = ExtResource("1_2j67b")
+mob_scene = ExtResource("2_dvjy4")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -50,7 +50,7 @@ mesh = SubResource("BoxMesh_lunh6")
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 13.4783, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_nlnwx")]
+[node name="Player" parent="." instance=ExtResource("3_vslq2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 
 [node name="CameraPivot" type="Marker3D" parent="."]
@@ -108,7 +108,7 @@ offset_right = 108.0
 offset_bottom = 48.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Score: 0"
-script = ExtResource("5_gxwbf")
+script = ExtResource("6_ftcti")
 
 [node name="Retry" type="ColorRect" parent="UserInterface"]
 layout_mode = 1
@@ -134,5 +134,18 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Press Enter to Retry"
 
+[node name="MenuBtn" type="Button" parent="UserInterface/Retry"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -46.0
+offset_right = 82.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "Menu"
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="pressed" from="UserInterface/Retry/MenuBtn" to="." method="_on_menu_btn_pressed"]
